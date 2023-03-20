@@ -1,17 +1,22 @@
 const router = require('express').Router();
 
-// GET POST methods 
+// GET method for reading notes
 router.get('', (req, res) => {
     
-    .then {
-        //  .then response goes here 
-
-    }
-    // catch errors 
+    .getNotes()
+    .then((notes) => {
+      return res.json(notes);
+    })
+    // catch error 404 response 
     .catch ((err) => res.status(404).json(err));
 
 });
 
+// POST method for add notes
+.addNote(req.body)
+    .then((note) => res.json(note))
+    .catch((err) => res.status(404).json(err));
+});
 
 //  DELETE notes function here 
 //DELETE /api/notes/:id

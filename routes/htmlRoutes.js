@@ -1,18 +1,15 @@
 const router = require('express').Router();
+const path = require('path');
 
-// GET POST methods 
-router.get('', (req, res) => {
-    
-    
-    .then {
-        //  .then response goes here 
-    }
-    
-
-// catch errors 
-.catch((err) => res.status(404).json(err));
-
-    });
+//  GEt method for notes html file 
+router.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/notes.html'));
+  });
+  
+  // route all URLs to index html file
+  router.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+  });
 
 // export router file
 module.exports = router;
