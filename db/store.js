@@ -1,6 +1,8 @@
 const util = require('util');
 const fs = require('fs');
 
+// import UUID NPM package here
+const uuid = require('uuid');
 const writeFileAsync = util.promisify(fs.writeFile);
 const readFileAsync = util.promisify(fs.readFile);
 
@@ -32,9 +34,8 @@ class Store {
         throw new Error("Please enter text");
       }
   
-      const newNoteID = { title, text, id: uuidv1() };
-  
-      // Get all notes, add the new note, write all the updated notes, return the newNote
+      const newNoteID = { title, text, id: uuid };
+      // get newNoteID and update note items 
       return this.getNotes()
         .then((notes) => {
             return [...notes, newNoteID];

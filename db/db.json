@@ -1,18 +1,16 @@
 [
-    {
-        "title":"Test Title 1",
-        "text":"Test text"
-    },
-    {
-        "title":"Test Title 2",
-        "text":"Test text"
-    },
-    {
-        "title":"Test Title 3",
-        "text":"Test text"
-    },
-    {
-        "title":"Test Title 4",
-        "text":"Test text"
-    }
+  { "title": "Test Title 1", "text": "Test text" },
+  { "title": "Test Title 2", "text": "Test text" },
+  { "title": "Test Title 3", "text": "Test text" },
+  { "title": "Test Title 4", "text": "Test text" },
+  {
+    "title": "nte",
+    "text": "gfdgd",
+    "id": { "NIL": "00000000-0000-0000-0000-000000000000" }
+  },
+  {
+    "title": "Note 2",
+    "text": "Hello",
+    "id": { "NIL": "00000000-0000-0000-0000-000000000000" }
+  }
 ]
