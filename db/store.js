@@ -1,12 +1,62 @@
-// import NPM packages and other files  
 const util = require('util');
 const fs = require('fs');
 
-// get - read notes 
+const writeFileAsync = util.promisify(fs.writeFile);
+const readFileAsync = util.promisify(fs.readFile);
 
-// add notes 
+// class for Store object 
+class Store {
+    read() {
+      return readFileAsync('db/db.json','utf8');
+    }
+    write(note) {
+      return writeFileAsync('db/db.json', JSON.stringify(note));
+    }
+    getNotes() {
+      return this.read().then((notes) => {
+        let parsedNotes;
+        // try catch statement for error handling 
+        try {
+          parsedNotes = [].concat(JSON.parse(notes));
+        } catch (err) {
+          parsedNotes = [];
+        }
+        return parsedNotes;
+      });
+    }
+  
+    postNote(note) {
+      const { title, text } = note;
+  
+      if (!title || !text) {
+        throw new Error("Please enter text");
+      }
+  
+      const newNoteID = { title, text, id: uuidv1() };
+  
+      // Get all notes, add the new note, write all the updated notes, return the newNote
+      return this.getNotes()
+        .then((notes) => {
+            return [...notes, newNoteID];
+    })
+        .then((updateNotes) => {
+            return this.write(updateNotes);
+        })
+        .then(() => {
+           return (newNoteID);
+    });
+}
+  
+    deleteNote(id) {
+      // Delete note items 
+      return this.getNotes()
+        .then((notes) => notes.filter((note) => note.id !== id))
+        .then((filteredNotes) => this.write(filteredNotes));
+    }
+  };
+  // export the Store file
+  module.exports = new Store();
 
-// remove notes 
 
 
-// export the file 
+ 
