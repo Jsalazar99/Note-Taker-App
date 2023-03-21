@@ -2,6 +2,9 @@
 
 An application that uses an Express.js back end and saves and retrieves note data from a JSON database file. This application is also deployed to Heroku.
 
+* The deployed application on Heroku:
+[Deployed Application Link](https://enigmatic-temple-89398.herokuapp.com/)
+
 
 ## User Story
 
